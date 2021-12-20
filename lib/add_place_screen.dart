@@ -67,7 +67,7 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
             icon: const Icon(Icons.add),
             label: const Text('Add Place'),
             onPressed: () {
-              _savePlace;
+              _savePlace();
             },
           )
         ],

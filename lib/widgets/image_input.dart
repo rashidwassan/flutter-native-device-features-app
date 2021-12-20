@@ -16,6 +16,10 @@ class _ImageInputState extends State<ImageInput> {
     final picker = ImagePicker();
     final imageFile =
         await picker.pickImage(source: ImageSource.camera, maxWidth: 600);
+
+    setState(() {
+      _storedImage = File(imageFile!.path);
+    });
   }
 
   @override
@@ -27,12 +31,15 @@ class _ImageInputState extends State<ImageInput> {
           height: 100,
           decoration: BoxDecoration(
               border: Border.all(width: 1, color: Colors.grey),
-              borderRadius: BorderRadius.circular(4)),
+              borderRadius: BorderRadius.circular(6)),
           child: (_storedImage != null)
-              ? Image.file(
-                  _storedImage!,
-                  fit: BoxFit.cover,
-                  width: double.infinity,
+              ? ClipRRect(
+                  borderRadius: BorderRadius.circular(6),
+                  child: Image.file(
+                    _storedImage!,
+                    fit: BoxFit.cover,
+                    width: double.infinity,
+                  ),
                 )
               : const Text(
                   'No Image Taken',

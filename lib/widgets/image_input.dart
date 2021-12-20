@@ -5,7 +5,8 @@ import 'package:path_provider/path_provider.dart' as syspaths;
 import 'package:path/path.dart' as path;
 
 class ImageInput extends StatefulWidget {
-  const ImageInput({Key? key}) : super(key: key);
+  final Function onSelectImage;
+  const ImageInput({Key? key, required this.onSelectImage}) : super(key: key);
 
   @override
   _ImageInputState createState() => _ImageInputState();
@@ -23,7 +24,9 @@ class _ImageInputState extends State<ImageInput> {
       _storedImage = File(imageFile!.path);
     });
 
+    // path provier helping us to get application documents directory
     final appDir = await syspaths.getApplicationDocumentsDirectory();
+    // path plugin helping us to get the name of file original image file.
     final String fileName = path.basename(imageFile!.path);
     final savedImage = await _storedImage!.copy('${appDir.path}/$fileName');
   }

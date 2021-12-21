@@ -25,4 +25,21 @@ class GreatPlaces with ChangeNotifier {
       'image': newPlace.image.path
     });
   }
+
+  Future<void> fetchAndSetPlaces() async {
+    final dataList = await DBHelper.getData('places');
+    dataList
+        .map(
+          (item) => Place(
+            id: item['id'].toString(),
+            title: item['title'].toString(),
+            location: null,
+            image: File(
+              item['image'].toString(),
+            ),
+          ),
+        )
+        .toList();
+    notifyListeners();
+  }
 }

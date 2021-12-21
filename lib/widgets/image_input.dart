@@ -20,14 +20,18 @@ class _ImageInputState extends State<ImageInput> {
     final imageFile =
         await picker.pickImage(source: ImageSource.gallery, maxWidth: 600);
 
+    if (imageFile == null) {
+      return;
+    }
+
     setState(() {
-      _storedImage = File(imageFile!.path);
+      _storedImage = File(imageFile.path);
     });
 
     // path provier helping us to get application documents directory
     final appDir = await syspaths.getApplicationDocumentsDirectory();
     // path plugin helping us to get the name of file original image file.
-    final String fileName = path.basename(imageFile!.path);
+    final String fileName = path.basename(imageFile.path);
     final savedImage = await _storedImage!.copy('${appDir.path}/$fileName');
     widget.onSelectImage(savedImage);
   }

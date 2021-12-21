@@ -5,7 +5,7 @@ import '/helpers/db_helper.dart';
 import '../models/place.dart';
 
 class GreatPlaces with ChangeNotifier {
-  final List<Place> _items = [];
+  List<Place> _items = [];
 
   List<Place> get items {
     return [..._items];
@@ -28,7 +28,8 @@ class GreatPlaces with ChangeNotifier {
 
   Future<void> fetchAndSetPlaces() async {
     final dataList = await DBHelper.getData('places');
-    dataList
+
+    _items = dataList
         .map(
           (item) => Place(
             id: item['id'].toString(),

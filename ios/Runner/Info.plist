@@ -13,9 +13,13 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Please allow the gallery access</string>	
+	<string>Please allow the gallery access!</string>	
 	<key>NSCameraUsageDescription</key>
-	<string>Please allow the camera access</string>
+	<string>Please allow the camera access!</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Please allow the location!</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Please allow location!</string>
 	<key>CFBundleName</key>
 	<string>flutter_native_features</string>
 	<key>CFBundlePackageType</key>

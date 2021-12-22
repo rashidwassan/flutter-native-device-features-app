@@ -13,13 +13,20 @@ class _LocationInputState extends State<LocationInput> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(
+        Container(
           height: 170,
           width: double.infinity,
+          decoration: BoxDecoration(
+              border: Border.all(
+            width: 1,
+            color: Colors.grey,
+          )),
           child: _previewImageUrl == null
-              ? const Text(
-                  'No location chosen',
-                  textAlign: TextAlign.center,
+              ? const Center(
+                  child: Text(
+                    'No location chosen',
+                    textAlign: TextAlign.center,
+                  ),
                 )
               : Image.network(
                   _previewImageUrl!,
@@ -28,6 +35,7 @@ class _LocationInputState extends State<LocationInput> {
                 ),
         ),
         Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextButton.icon(
               onPressed: () {},
@@ -36,6 +44,9 @@ class _LocationInputState extends State<LocationInput> {
               style: ButtonStyle(
                   textStyle: MaterialStateProperty.all(
                       TextStyle(color: Theme.of(context).primaryColor))),
+            ),
+            const SizedBox(
+              width: 12,
             ),
             TextButton.icon(
               onPressed: () {},
